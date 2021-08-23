@@ -1,0 +1,10 @@
+<apex:page standardController="Account" lightningStylesheets="true">
+    <apex:pageBlock title="My Content">
+      <apex:pageBlockSection columns="2">
+        <apex:outputField value="{!account.name}"/>
+        <apex:outputField value="{!account.site}"/>
+        <apex:outputField value="{!account.type}"/>
+        <apex:outputField value="{!account.accountNumber}"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

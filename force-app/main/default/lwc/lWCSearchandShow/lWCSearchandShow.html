@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Search Contacts" icon-name="standard:account">
+        <div style="margin-left: 6%" if:true={error}>
+            <lightning-badge label={error} style="color: red;"></lightning-badge>
+        </div>
+
+        <div>
+            <lightning-input 
+                label="Search"
+                type="search" 
+                value={searchKey} 
+                onchange={handleNameChange}>
+            </lightning-input>
+            <template if:true={contacts.data}>
+                <template for:each={contacts.data} for:item="contact">
+                    <p key={contact.id}> {contact.Name} </p> 
+                    <lightning-button 
+                        key={contact.Id} 
+                        variant="base" 
+                        label={contact.Name} 
+                        title="View Contact" 
+                        onclick={handleContactView} 
+                        value={contact.Id}>
+                    </lightning-button>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

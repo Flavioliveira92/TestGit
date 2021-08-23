@@ -1,0 +1,58 @@
+<template>
+    <lightning-card title="Create Account Record" icon-name="standard:account">
+        <div style="margin-left: 6%" if:true={error}>
+            <lightning-badge label={error} style="color: red;"></lightning-badge>
+        </div>
+
+        <template if:true={accRecord}>
+            <div class="slds-m-around--xx-large">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <lightning-input 
+                            label="Account Name" 
+                            name="accName" 
+                            required="required" 
+                            type="text" 
+                            value={accRecord.Name} 
+                            onchange={handleNameChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="form-group">
+                        <lightning-input
+                            label="Phone Number" 
+                            name="accPhone" 
+                            type="number" 
+                            value={accRecord.Phone} 
+                            onchange={handlePhoneChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="form-group">
+                        <template if:true={accountTypeValues.data}>
+                            <lightning-combobox 
+                                name="progress" 
+                                label="Type" 
+                                value={accRecord.Type}
+                                options={accountTypeValues.data.values} 
+                                onchange={handleTypeChange}>
+                            </lightning-combobox>
+                        </template>
+                    </div>
+                    <div class="form-group">
+                        <template if:true={accountIndustryValues.data}>
+                            <lightning-combobox 
+                                name="progress" 
+                                label="Industry" 
+                                value={accRecord.Industry}
+                                options={accountIndustryValues.data.values} 
+                                onchange={handleIndustryChange}>
+                            </lightning-combobox>
+                        </template>
+                    </div>
+                </div>
+                <br/>
+                <lightning-button label="Reset Form" onclick={handleReset} variant="brand"></lightning-button>
+                <lightning-button label="Submit" onclick={handleSave} variant="brand"></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>
